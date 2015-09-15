@@ -1,0 +1,15 @@
+Artifact ID: Sunny Side
+Version: v1
+
+Handlers:
+
+	User: 
+		Endpoints:
+			POST: /users
+			GET: 
+				Single user: /users/{user_id}
+				List users: /users
+			PUT: /users/{user_id}
+			DELETE: /users/{user_id}
+	
+	Profile:
