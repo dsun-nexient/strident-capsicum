@@ -6,19 +6,23 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sunnyside.api.enumerated.Role;
 
 @Entity
 @Table(name = "user")
 public class User extends BaseEntity{
 	
+	@JsonIgnore
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role")
 	private Role role;
 	@Column(name = "username")
 	private String userame;
+	@JsonIgnore
 	@Column(name = "password")
 	private String password;
+	@JsonIgnore
 	@Column(name = "is_active")
 	private Boolean isActive;
 	
