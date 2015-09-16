@@ -14,11 +14,23 @@ public class UserManager {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public User read(Integer userId) {
+	public User read(final Integer userId) {
 		return userRepository.findOne(userId);
 	}
 	
 	public Collection<User> list() {
 		return userRepository.findAll();
+	}
+	
+	public User createOrUpdate(final User user) {
+		return userRepository.save(user);
+	}
+	
+	public void deleteById(final Integer userId) {
+		userRepository.delete(userId);
+	}
+	
+	public void deleteByUser(final User user) {
+		userRepository.delete(user);
 	}
 }
