@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 	`password` varchar(255) NOT NULL,
 	`is_active` boolean NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET=utf8;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8;
 
 
 CREATE TABLE IF NOT EXISTS `profile` (
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
 	`date_of_birth` timestamp NOT NULL,
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET=utf8;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8;
 
 
 CREATE TABLE IF NOT EXISTS `blog` (
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
 	`created` timestamp NOT NULL,
 	`content` text NOT NULL,
 	FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`)
-) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 
 CREATE TABLE IF NOT EXISTS `friends` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `friends` (
 	`friend_profile_id` int unsigned NOT NULL,
 	FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`),
 	FOREIGN KEY (`friend_profile_id`) REFERENCES `profile` (`id`)
-) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 
 
