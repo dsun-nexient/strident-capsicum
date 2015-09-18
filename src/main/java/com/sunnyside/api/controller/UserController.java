@@ -3,6 +3,7 @@ package com.sunnyside.api.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sunnyside.api.entity.User;
 import com.sunnyside.api.manager.UserManager;
 
+@Controller
 @RestController
 @RequestMapping(value = "v1/user")
 public class UserController {
@@ -26,7 +28,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-	public User read(@PathVariable final Integer userId) {
+	public User read(@PathVariable final Integer userId) {		
+		final User readUser = userManager.read(userId);
+		Assert.notNull(readUser, "User.update(User, Integer): No entity found with userId: " + userId);
 		return userManager.read(userId);
 	}
 	
@@ -38,7 +42,7 @@ public class UserController {
 	@RequestMapping(value = "/{userId}", method = RequestMethod.PUT)
 	public User update(@RequestBody final User user, @PathVariable final Integer userId) {
 		final User readUser = userManager.read(userId);
-		Assert.notNull(readUser, "userManager.read() in UserController.update() came back as null");
+		Assert.notNull(readUser, "User.update(User, Integer): No entity found with userId: " + userId);
 		return userManager.createOrUpdate(user);
 	}
 	
