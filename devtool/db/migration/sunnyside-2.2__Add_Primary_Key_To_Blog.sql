@@ -1,4 +1,0 @@
-
-
-ALTER TABLE `blog` ADD `id` int;
-ALTER TABLE `blog` MODIFY COLUMN `id` int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;

@@ -25,10 +25,12 @@ CREATE TABLE IF NOT EXISTS `profile` (
 
 CREATE TABLE IF NOT EXISTS `blog` (
 	`profile_id` int unsigned NOT NULL,
+	`profile_blog_id` int unsigned NOT NULL AUTO_INCREMENT,
 	`created` timestamp NOT NULL,
 	`content` text NOT NULL,
+	PRIMARY KEY (`profile_id`, `profile_blog_id`),
 	FOREIGN KEY (`profile_id`) REFERENCES `profile` (`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+) ENGINE = MyISAM DEFAULT CHARSET = utf8;
 
 
 CREATE TABLE IF NOT EXISTS `friends` (
