@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.sunnyside.api.entity.Blog;
 import com.sunnyside.api.entity.Profile;
 import com.sunnyside.api.jsonview.ProfileView;
-import com.sunnyside.api.jsonview.ProfileView.ProfileBlog;
 import com.sunnyside.api.manager.ProfileManager;
 
 @RestController
