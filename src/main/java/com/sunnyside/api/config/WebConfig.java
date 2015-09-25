@@ -17,11 +17,20 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
+/*
+ * Stereotypes of the @Component annotation are:
+ * @Configuration
+ * @Controller
+ * @RestController
+ * @Service
+ * @Repository
+ */
 @Configuration
 @EnableWebMvc
+//ComponentScan will add classes annotated with any stereotype of @Component into the given Application or WebApplication Context
 @ComponentScan(basePackages = "com.sunnyside.api.controller")
-public class WebConfig extends WebMvcConfigurerAdapter{
-	
+public class WebConfig extends WebMvcConfigurerAdapter {
+
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
@@ -29,17 +38,15 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		jsonConverter.setPrettyPrint(true);
 		converters.add(jsonConverter);
 	}
-	
-	
+
 	@Bean
 	public ObjectMapper objectMapper() {
 		Jackson2ObjectMapperBuilder mapperBuilder = new Jackson2ObjectMapperBuilder();
 		return mapperBuilder.propertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES)
-		.build();
+				.build();
 	}
-	
-	
-	@Bean 
+
+	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setPrefix("/WEB-INF/");
@@ -52,5 +59,5 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-	
+
 }
