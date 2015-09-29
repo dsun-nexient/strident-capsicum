@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "array",
+  "items": {
+    "id": "0",
+    "type": "object",
+    "properties": {
+      "id": {
+        "id": "id",
+        "type": "integer",
+        "default": 1
+      },
+      "role": {
+        "id": "role",
+        "type": "string",
+        "default": "ADMIN"
+      },
+      "userame": {
+        "id": "userame",
+        "type": "string",
+        "default": "admin"
+      },
+      "password": {
+        "id": "password",
+        "type": "string",
+        "default": "admin"
+      },
+      "is_active": {
+        "id": "is_active",
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "additionalProperties": false
+  }
+}

@@ -82,7 +82,10 @@ public class UserController {
 			value = "Updates an existing User entity with the given userId.",
 			code = 200
 			)
-	public User update(@RequestBody final User user, @PathVariable final Integer userId) {
+	public User update(@RequestBody final User user, @PathVariable final Integer userId) throws ResourceNotFoundException {
+		Optional<User> optional = Optional.ofNullable(userManager.read(userId));
+		User existingUser = optional.orElseThrow(() -> new ResourceNotFoundException(602, "No existing resource to update with the given id: " + userId));
+		user.setId(existingUser.getId());
 		return userManager.createOrUpdate(user);
 	}
 

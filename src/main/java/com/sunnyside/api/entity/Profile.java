@@ -20,6 +20,7 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sunnyside.api.dto.ProfileDTO;
 import com.sunnyside.api.jsonview.ProfileView;
@@ -72,10 +73,11 @@ public class Profile extends BaseEntity{
 	 * -Jackson for serialization and deserialization
 	 * -Hibernate for data persistence and retreival
 	 */
-	
+	@JsonProperty
 	public User getUser() {
 		return user;
 	}
+	@JsonIgnore
 	public void setUser(User user) {
 		this.user = user;
 	}

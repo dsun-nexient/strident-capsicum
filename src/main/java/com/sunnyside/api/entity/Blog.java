@@ -23,10 +23,10 @@ public class Blog {
 
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "profile_id")
+	@JoinColumn(name = "profile_id", nullable = true)
 	private Profile profile;
 	
-	@JsonView(ProfileBlog.class)
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "profile_blog_id")

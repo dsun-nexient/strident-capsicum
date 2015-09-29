@@ -12,4 +12,5 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 	public Collection<Blog> findByProfileId(Integer profileId);
 	
 	public Blog findByProfileIdAndProfileBlogId(Integer profileId, Integer profileBlogId);
+	
 }

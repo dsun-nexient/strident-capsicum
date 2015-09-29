@@ -29,7 +29,7 @@ public class JpaConfig implements InitializingBean{
 	
 	@Autowired
 	private Environment env;
-	
+
 	//DataSource properties
 	private String username;
 	private String password;

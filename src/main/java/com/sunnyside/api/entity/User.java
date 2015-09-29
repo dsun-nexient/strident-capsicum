@@ -7,9 +7,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sunnyside.api.enumerated.Role;
 import com.sunnyside.api.jsonview.ProfileView;
+
 @Entity
 @Table(name = "user")
 public class User extends BaseEntity{
@@ -21,7 +23,7 @@ public class User extends BaseEntity{
 	
 	@JsonView(ProfileView.ProfileFriends.class)
 	@Column(name = "username")
-	private String userame;
+	private String username;
 	@JsonIgnore
 	@Column(name = "password")
 	private String password;
@@ -36,15 +38,16 @@ public class User extends BaseEntity{
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public String getUserame() {
-		return userame;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserame(String userame) {
-		this.userame = userame;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
 	}
+	@JsonProperty
 	public void setPassword(String password) {
 		this.password = password;
 	}

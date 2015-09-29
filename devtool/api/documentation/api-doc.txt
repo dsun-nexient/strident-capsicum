@@ -1,0 +1,77 @@
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /v1/users
+       Parameters = {}
+          Headers = {Accept=[application/json]}
+
+Handler:
+             Type = com.sunnyside.api.controller.UserController
+           Method = public java.util.Collection<com.sunnyside.api.entity.User> com.sunnyside.api.controller.UserController.list()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json]}
+     Content type = application/json
+             Body = [ {
+  "id" : 1,
+  "role" : "USER",
+  "username" : "username",
+  "password" : "ce421738b1c5540836bdc8ff707f1572",
+  "is_active" : true
+}, {
+  "id" : 2,
+  "role" : "USER",
+  "username" : "dsun",
+  "password" : "user",
+  "is_active" : true
+}, {
+  "id" : 3,
+  "role" : "USER",
+  "username" : "jjims",
+  "password" : "user",
+  "is_active" : true
+}, {
+  "id" : 4,
+  "role" : "USER",
+  "username" : "dradcliff",
+  "password" : "user",
+  "is_active" : true
+}, {
+  "id" : 5,
+  "role" : "USER",
+  "username" : "bwayne",
+  "password" : "user",
+  "is_active" : true
+}, {
+  "id" : 6,
+  "role" : "USER",
+  "username" : "username",
+  "password" : "ce421738b1c5540836bdc8ff707f1572",
+  "is_active" : true
+}, {
+  "id" : 7,
+  "role" : "USER",
+  "username" : "username",
+  "password" : "ce421738b1c5540836bdc8ff707f1572",
+  "is_active" : true
+} ]
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
