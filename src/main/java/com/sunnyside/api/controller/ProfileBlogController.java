@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,43 +31,53 @@ public class ProfileBlogController {
 	private ProfileBlogManager profileBlogManager;
 	
 	
+	
 	@JsonView(ProfileBlog.class)
 	@RequestMapping(value = "/{profileId}/blogs", method = RequestMethod.GET)
 	public Collection<Blog> listProfileBlogs(@PathVariable final Integer profileId) {
-		return profileBlogManager.listBlogs(profileId);
+		
+		Collection<Blog> blogs = profileBlogManager.listBlogs(profileId);
+		
+		return blogs;
 	}
+	
+	
 	
 	@JsonView(ProfileBlog.class)
 	@RequestMapping(value = "/{profileId}/blogs/{profileBlogId}", method = RequestMethod.GET)
 	public Blog readProfileBlog(@PathVariable final Integer profileId, @PathVariable final Integer profileBlogId) throws ResourceNotFoundException {
 		
-		Optional<Profile> optionalProfile = Optional.ofNullable(profileManager.read(profileId));
-		optionalProfile.orElseThrow(() -> new ResourceNotFoundException(603, " No existing resource to read with the given id: " + profileId));
-		
 		Optional<Blog> optionalBlog = Optional.ofNullable(profileBlogManager.readBlog(profileId, profileBlogId));
-		return optionalBlog.orElseThrow(() -> new ResourceNotFoundException(604, " No existing resource to read with the given id: " + profileBlogId));
+		
+		return optionalBlog.orElseThrow(() -> new ResourceNotFoundException(600, " No existing resource to read with the given profilelBlogId: " + profileBlogId));
 	}
+	
+	
 	
 	@RequestMapping(value = "/{profileId}/blogs", method = RequestMethod.POST)
 	public Blog createProfileBlog(@PathVariable final Integer profileId, @RequestBody final Blog blog) throws ResourceNotFoundException {
-
-		//Check that the a Profile exists with the given prodileId
+		
 		Optional<Profile> optional = Optional.ofNullable(profileManager.read(profileId));
-		//Get the existing profile or if Optional is empty throw ResourceNotFoundException
-		Profile existingProfile = optional.orElseThrow(() -> new ResourceNotFoundException(603, " No existing resource to read with the given id: " + profileId));
 		
-		//The new Blog has the reference to its Profile
-		blog.setProfile(existingProfile);
+		Profile managedProfile = optional.orElseThrow(() -> new ResourceNotFoundException(603, " No existing resource to read with the given profileId: " + profileId));
 		
-		//The existing Profile has the new Blog in its collection
-		existingProfile.getBlogs().add(blog);
+		blog.setProfile(managedProfile);
+		
+		managedProfile.getBlogs().add(blog);
 				
-		//Update the Profile
-		profileManager.updateOrDelete(existingProfile);
+		profileManager.updateOrSave(managedProfile);
 		
-		
-		//Return the new Blog
 		return blog;
+	}
+	
+	
+	
+	@RequestMapping(value = "/{profileId}/blogs/{profileBlogId}", method = RequestMethod.DELETE)
+	public void deleteProfileBlog(@PathVariable final Integer profileId, @PathVariable final Integer profileBlogId) throws ResourceNotFoundException {
+				
+		Optional.ofNullable(profileBlogManager.readBlog(profileId, profileBlogId)).orElseThrow(() -> new ResourceNotFoundException(603, " No existing resource to read with the given id: " + profileId));
+		
+		profileBlogManager.deleteBlog(profileId, profileBlogId);
 	}
 	
 }

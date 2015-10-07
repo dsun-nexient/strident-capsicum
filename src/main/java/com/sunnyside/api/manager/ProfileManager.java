@@ -15,7 +15,7 @@ public class ProfileManager {
 	private ProfileRepository profileRepository;
 	
 
-	public Profile updateOrDelete(final Profile profile) {
+	public Profile updateOrSave(final Profile profile) {
 		return profileRepository.save(profile);
 	}
 	
@@ -28,6 +28,7 @@ public class ProfileManager {
 	}
 	
 	public void delete(final Integer profileId) {
-		profileRepository.delete(profileId);
+		profileRepository.deleteFriendsByProfileId(profileId);
+		profileRepository.deleteByProfileId(profileId);
 	}
 }

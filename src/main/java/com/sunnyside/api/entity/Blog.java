@@ -2,7 +2,6 @@ package com.sunnyside.api.entity;
 
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +21,7 @@ import com.sunnyside.api.jsonview.ProfileView.ProfileBlog;
 public class Blog {
 
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "profile_id", nullable = true)
 	private Profile profile;
 	

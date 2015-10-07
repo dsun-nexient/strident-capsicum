@@ -17,4 +17,9 @@ public class ControllerExceptionHandler  {
 		return exception;
 	}
 
+	@JsonView(BaseView.class)
+	@ExceptionHandler(PageNotFoundException.class)
+	public PageNotFoundException handlePageNotFoundException(PageNotFoundException exception) {
+		return exception;
+	}
 }

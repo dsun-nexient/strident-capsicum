@@ -1,13 +1,13 @@
 
 MockHttpServletRequest:
-      HTTP Method = GET
+      HTTP Method = POST
       Request URI = /v1/users
        Parameters = {}
-          Headers = {Accept=[application/json]}
+          Headers = {Content-Type=[application/json], Accept=[application/json]}
 
 Handler:
              Type = com.sunnyside.api.controller.UserController
-           Method = public java.util.Collection<com.sunnyside.api.entity.User> com.sunnyside.api.controller.UserController.list()
+           Method = public com.sunnyside.api.entity.User com.sunnyside.api.controller.UserController.create(com.sunnyside.api.entity.User)
 
 Async:
     Async started = false
@@ -29,49 +29,13 @@ MockHttpServletResponse:
     Error message = null
           Headers = {Content-Type=[application/json]}
      Content type = application/json
-             Body = [ {
-  "id" : 1,
+             Body = {
+  "id" : 26,
   "role" : "USER",
   "username" : "username",
-  "password" : "ce421738b1c5540836bdc8ff707f1572",
+  "password" : "1a7791a6d7f31bbe862937a919c987ab",
   "is_active" : true
-}, {
-  "id" : 2,
-  "role" : "USER",
-  "username" : "dsun",
-  "password" : "user",
-  "is_active" : true
-}, {
-  "id" : 3,
-  "role" : "USER",
-  "username" : "jjims",
-  "password" : "user",
-  "is_active" : true
-}, {
-  "id" : 4,
-  "role" : "USER",
-  "username" : "dradcliff",
-  "password" : "user",
-  "is_active" : true
-}, {
-  "id" : 5,
-  "role" : "USER",
-  "username" : "bwayne",
-  "password" : "user",
-  "is_active" : true
-}, {
-  "id" : 6,
-  "role" : "USER",
-  "username" : "username",
-  "password" : "ce421738b1c5540836bdc8ff707f1572",
-  "is_active" : true
-}, {
-  "id" : 7,
-  "role" : "USER",
-  "username" : "username",
-  "password" : "ce421738b1c5540836bdc8ff707f1572",
-  "is_active" : true
-} ]
+}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []

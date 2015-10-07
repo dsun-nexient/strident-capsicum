@@ -5,6 +5,8 @@ import javax.servlet.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import com.sunnyside.api.config.filter.DescribingFilter;
+
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
@@ -27,8 +29,11 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
 		characterEncodingFilter.setEncoding("UTF-8");
 		characterEncodingFilter.setForceEncoding(true);
+		
+		DescribingFilter describingFilter = new DescribingFilter();
 				
-		return new Filter[] {characterEncodingFilter };
+		//The returned Filter array is the FilterChain
+		return new Filter[] { characterEncodingFilter, describingFilter };
 	}
 
 }

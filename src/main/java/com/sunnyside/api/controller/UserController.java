@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sunnyside.api.controller.exception.PageNotFoundException;
 import com.sunnyside.api.controller.exception.ResourceNotFoundException;
 import com.sunnyside.api.entity.User;
 import com.sunnyside.api.manager.UserManager;
@@ -37,6 +39,7 @@ public class UserController {
 			code = 200
 			)
 	public User create(@RequestBody final User user) {
+		//Ideally A validator would be nice here
 		return userManager.createOrUpdate(user);
 	}
 
@@ -66,9 +69,18 @@ public class UserController {
 			value = "Returns a list of all User entities.",
 			code = 200
 			)
-	public Collection<User> list() {
-		return userManager.list();
+	public Collection<User> list(@RequestParam(value = "page", required = false) Integer pageNumber) throws PageNotFoundException {
+		if (pageNumber == null) {
+			return userManager.list();
+		} else if (pageNumber < 1) {
+			throw new PageNotFoundException(700, "Page index can not be less than one");
+		}
+		
+		return userManager.list(pageNumber);
 	}
+	
+	
+	
 
 	
 	

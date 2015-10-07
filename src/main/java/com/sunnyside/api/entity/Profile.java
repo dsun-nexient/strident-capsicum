@@ -52,11 +52,11 @@ public class Profile extends BaseEntity{
 	private Date dateOfBirth;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "profile", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Blog.class, mappedBy = "profile", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Collection<Blog> blogs; 
 	
 	@JsonIgnore
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(targetEntity = Profile.class, fetch = FetchType.EAGER)
 	@JoinTable
 	(name = "friends", 
 	joinColumns = {@JoinColumn(name = "profile_id")},
@@ -117,6 +117,7 @@ public class Profile extends BaseEntity{
 	public void setFriendsReference(Collection<Profile> friends) {
 		this.friendsReference = friends;
 	}
+	@JsonProperty
 	public Collection<ProfileDTO> getFriends() {
 		friends = new ArrayList<>();
 		ProfileDTO profileDTO;
@@ -131,6 +132,7 @@ public class Profile extends BaseEntity{
 		}
 		return friends;
 	}
+	@JsonIgnore
 	public void setFriends(Collection<ProfileDTO> friendsDTO) {
 		this.friends = friendsDTO;
 	}

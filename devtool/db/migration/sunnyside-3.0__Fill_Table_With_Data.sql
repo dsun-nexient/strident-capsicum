@@ -2,6 +2,18 @@
 INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'jjims', 'user', true);
 INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'dradcliff', 'user', true);
 INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'bwayne', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'ckent', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'bbunny', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'pstar', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'pparker', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'sgoku', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'ssquarepants', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'nharris', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'jchan', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'jlee', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'blee', 'user', true);
+INSERT INTO `user` (`role`, `username`, `password`, `is_active`) VALUES ('USER', 'ssmith', 'user', true);
+
 
 INSERT INTO `profile` (`user_id`, `created`, `first_name`, `last_name`, `date_of_birth`) VALUES (1, CURRENT_TIMESTAMP(), "Admin", "Admin", CURRENT_DATE());
 INSERT INTO `profile` (`user_id`, `created`, `first_name`, `last_name`, `date_of_birth`) VALUES (2, CURRENT_TIMESTAMP(), "David", "Sun", CURRENT_DATE());

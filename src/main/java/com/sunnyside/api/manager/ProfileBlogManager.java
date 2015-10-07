@@ -23,4 +23,7 @@ public class ProfileBlogManager {
 		return blogRepository.findByProfileIdAndProfileBlogId(profileId, profileBlogId);
 	}
 	
+	public void deleteBlog(final Integer profileId, final Integer profileBlogId) {
+		blogRepository.deleteByProfileIdAndProfileBlogId(profileId, profileBlogId);
+	}
 }
